@@ -27,6 +27,8 @@ require (
 	github.com/jcmturner/dnsutils/v2 v2.0.0 // indirect
 	github.com/jcmturner/rpc/v2 v2.0.3 // indirect
 	github.com/kr/pretty v0.3.0 // indirect
+	github.com/max444ks1m777/gokrb5 v0.0.0-20240226054558-aaca06168466 // indirect
+	github.com/max444ks1m777/gokrb5/v8 v8.0.0-20240226054558-aaca06168466 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	golang.org/x/crypto v0.19.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect

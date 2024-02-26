@@ -11,11 +11,11 @@ import (
 
 	"github.com/jcmturner/gofork/encoding/asn1"
 	"github.com/jcmturner/gokrb5/v8/asn1tools"
-	"github.com/jcmturner/gokrb5/v8/gssapi"
 	"github.com/jcmturner/gokrb5/v8/iana/chksumtype"
 	"github.com/jcmturner/gokrb5/v8/iana/keyusage"
 	"github.com/jcmturner/gokrb5/v8/messages"
 	"github.com/jcmturner/gokrb5/v8/types"
+	"github.com/max444ks1m777/gokrb5/v8/gssapi"
 )
 
 const (
@@ -180,22 +180,49 @@ func (krbAuth *GSSAPIKerberosAuth) initSecContext(bytes []byte, kerberosClient K
 		krbAuth.step = GSS_API_VERIFY
 		return krbAuth.appendGSSAPIHeader(aprBytes)
 	case GSS_API_VERIFY:
-		wrapTokenReq := gssapi.WrapToken{}
-		if err := wrapTokenReq.Unmarshal(bytes, true); err != nil {
-			return nil, err
-		}
-		// Validate response.
-		isValid, err := wrapTokenReq.Verify(krbAuth.encKey, keyusage.GSSAPI_ACCEPTOR_SEAL)
-		if !isValid {
-			return nil, err
-		}
+		// Check for 0x60 as the first byte
+		// As per RFC 4121 § 4.4, these Token ID - 0x60 0x00 to 0x60 0xFF
+		// are reserved to indicate 'Generic GSS-API token framing' that was used by
+		// GSS-API v1, and are not supported in GSS-API v2
+		if bytes[0] == 0x60 {
+			wrapTokenReq := gssapi.WrapTokenV1{}
+			if err := wrapTokenReq.Unmarshal(bytes, true); err != nil {
+				return nil, err
+			}
 
-		wrapTokenResponse, err := gssapi.NewInitiatorWrapToken(wrapTokenReq.Payload, krbAuth.encKey)
-		if err != nil {
-			return nil, err
+			// keyusage.GSSAPI_ACCEPTOR_SIGN (=23) resolves into derivation salt = 13 which is the one we must use for RC4 WrapTokenV1
+			// even though https://datatracker.ietf.org/doc/html/rfc4757#section-7.3 suggests to use derivation salt = 15 (which is actually MIC's salt)
+			isValid, err := wrapTokenReq.Verify(krbAuth.encKey, keyusage.GSSAPI_ACCEPTOR_SIGN)
+			if !isValid {
+				return nil, err
+			}
+
+			wrapTokenResponse, err := gssapi.NewInitiatorWrapTokenV1(&wrapTokenReq, krbAuth.encKey)
+			if err != nil {
+				return nil, err
+			}
+
+			krbAuth.step = GSS_API_FINISH
+			return wrapTokenResponse.Marshal(krbAuth.encKey)
+		} else {
+			// Otherwise build WrapToken of GSS-API v2
+			wrapTokenReq := gssapi.WrapToken{}
+			if err := wrapTokenReq.Unmarshal(bytes, true); err != nil {
+				return nil, err
+			}
+
+			isValid, err := wrapTokenReq.Verify(krbAuth.encKey, keyusage.GSSAPI_ACCEPTOR_SEAL)
+			if !isValid {
+				return nil, err
+			}
+
+			wrapTokenResponse, err := gssapi.NewInitiatorWrapToken(wrapTokenReq.Payload, krbAuth.encKey)
+			if err != nil {
+				return nil, err
+			}
+			krbAuth.step = GSS_API_FINISH
+			return wrapTokenResponse.Marshal()
 		}
-		krbAuth.step = GSS_API_FINISH
-		return wrapTokenResponse.Marshal()
 	}
 	return nil, nil
 }
