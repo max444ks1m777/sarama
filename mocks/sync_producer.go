@@ -4,7 +4,7 @@ import (
 	"errors"
 	"sync"
 
-	"github.com/IBM/sarama"
+	"github.com/max444ks1m777/sarama"
 )
 
 // SyncProducer implements sarama's SyncProducer interface for testing purposes.

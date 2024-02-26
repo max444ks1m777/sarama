@@ -12,6 +12,7 @@ require (
 	github.com/jcmturner/gofork v1.7.6
 	github.com/jcmturner/gokrb5/v8 v8.4.4
 	github.com/klauspost/compress v1.17.7
+	github.com/max444ks1m777/gokrb5/v8 v8.0.0-20240226054558-aaca06168466
 	github.com/pierrec/lz4/v4 v4.1.21
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475
 	github.com/stretchr/testify v1.8.4
@@ -26,12 +27,11 @@ require (
 	github.com/jcmturner/aescts/v2 v2.0.0 // indirect
 	github.com/jcmturner/dnsutils/v2 v2.0.0 // indirect
 	github.com/jcmturner/rpc/v2 v2.0.3 // indirect
-	github.com/kr/pretty v0.3.0 // indirect
-	github.com/max444ks1m777/gokrb5 v0.0.0-20240226054558-aaca06168466 // indirect
-	github.com/max444ks1m777/gokrb5/v8 v8.0.0-20240226054558-aaca06168466 // indirect
+	github.com/kr/pretty v0.1.0 // indirect
+	github.com/kr/text v0.2.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	golang.org/x/crypto v0.19.0 // indirect
-	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
+	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 

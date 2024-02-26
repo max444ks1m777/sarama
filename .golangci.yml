@@ -19,7 +19,7 @@ linters-settings:
   misspell:
     locale: US
   goimports:
-    local-prefixes: github.com/IBM/sarama
+    local-prefixes: github.com/max444ks1m777/sarama
   gocritic:
     enabled-tags:
       - diagnostic

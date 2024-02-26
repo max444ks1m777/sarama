@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/IBM/sarama"
+	"github.com/max444ks1m777/sarama"
 )
 
 func TestMockConsumerImplementsConsumerInterface(t *testing.T) {

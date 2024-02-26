@@ -16,7 +16,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/IBM/sarama/internal/toxiproxy"
+	"github.com/max444ks1m777/sarama/internal/toxiproxy"
 )
 
 const uncommittedTopic = "uncommitted-topic-test-4"

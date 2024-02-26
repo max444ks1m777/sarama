@@ -10,7 +10,7 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/IBM/sarama"
+	"github.com/max444ks1m777/sarama"
 )
 
 var (

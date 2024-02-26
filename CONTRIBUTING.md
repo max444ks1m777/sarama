@@ -1,9 +1,5 @@
 # Contributing
 
-[fork]: https://github.com/IBM/sarama/fork
-[pr]: https://github.com/IBM/sarama/compare
-[released]: https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license
-
 Hi there! We are thrilled that you would like to contribute to Sarama.
 Contributions are always welcome, both reporting issues and submitting pull requests!
 
