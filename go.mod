@@ -1,4 +1,4 @@
-module github.com/IBM/sarama
+module github.com/max444ks1m777/sarama
 
 go 1.19
 
