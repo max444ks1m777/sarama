@@ -11,7 +11,7 @@ require (
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/jcmturner/gofork v1.7.6
 	github.com/klauspost/compress v1.17.7
-	github.com/max444ks1m777/gokrb5/v8 v8.0.0-20240227093410-2646c58743cb
+	github.com/max444ks1m777/gokrb5/v8 v8.0.0-20240227103150-d0f3fd7743d8
 	github.com/pierrec/lz4/v4 v4.1.21
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475
 	github.com/stretchr/testify v1.8.4
