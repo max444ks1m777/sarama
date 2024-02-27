@@ -10,12 +10,12 @@ import (
 	"time"
 
 	"github.com/jcmturner/gofork/encoding/asn1"
-	"github.com/jcmturner/gokrb5/v8/asn1tools"
-	"github.com/jcmturner/gokrb5/v8/iana/chksumtype"
-	"github.com/jcmturner/gokrb5/v8/iana/keyusage"
-	"github.com/jcmturner/gokrb5/v8/messages"
-	"github.com/jcmturner/gokrb5/v8/types"
+	"github.com/max444ks1m777/gokrb5/v8/asn1tools"
 	"github.com/max444ks1m777/gokrb5/v8/gssapi"
+	"github.com/max444ks1m777/gokrb5/v8/iana/chksumtype"
+	"github.com/max444ks1m777/gokrb5/v8/iana/keyusage"
+	"github.com/max444ks1m777/gokrb5/v8/messages"
+	"github.com/max444ks1m777/gokrb5/v8/types"
 )
 
 const (
