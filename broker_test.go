@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jcmturner/gokrb5/v8/krberror"
+	"github.com/max444ks1m777/gokrb5/v8/krberror"
 	"github.com/rcrowley/go-metrics"
 )
 
